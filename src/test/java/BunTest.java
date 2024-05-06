@@ -9,7 +9,10 @@ import java.util.Collection;
 
 @RunWith(Parameterized.class)
 public class BunTest {
+    private final static float EXPECTED_PRICE_DELTA = 0;
+
     private final String name;
+
     private final float price;
 
     private final Bun bun;
@@ -26,7 +29,8 @@ public class BunTest {
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{
                 {"Ржаная булочка", 200},
-                {"Булочка с кунжутом", 100}
+                {"Булочка с кунжутом", 100},
+                {"Вчерашняя булочка", 0}
         });
     }
 
@@ -37,6 +41,6 @@ public class BunTest {
 
     @Test
     public void bunPriceTest() {
-        Assert.assertEquals("Цена булочки не соответствует заданной при инициации", this.price, bun.getPrice(), 0);
+        Assert.assertEquals("Цена булочки не соответствует заданной при инициации", this.price, bun.getPrice(), EXPECTED_PRICE_DELTA);
     }
 }

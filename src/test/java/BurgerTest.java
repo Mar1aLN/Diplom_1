@@ -169,7 +169,6 @@ public class BurgerTest {
     @Test
     public void moveIngredientReceiptTest() {
         moveIngredient();
-
         Assert.assertEquals("Чек после перемещения ингредиента не соответствует ожидаемому", getExpectedReceipt(), currentBurger.getReceipt());
     }
 
