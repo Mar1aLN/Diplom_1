@@ -4,10 +4,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.mockito.Mockito;
-import praktikum.Burger;
-import praktikum.IBun;
-import praktikum.IIngredient;
-import praktikum.IngredientType;
+import praktikum.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -167,9 +164,12 @@ public class BurgerTest {
     }
 
     @Test
-    public void moveIngredientReceiptTest() {
-        moveIngredient();
-        Assert.assertEquals("Чек после перемещения ингредиента не соответствует ожидаемому", getExpectedReceipt(), currentBurger.getReceipt());
+    public void moveIngredientOrderTest() {
+        if(!currentBurger.ingredients.isEmpty()){
+            IIngredient movedIngredient = currentBurger.ingredients.get(currentBurger.ingredients.size() - 1);
+            moveIngredient();
+            Assert.assertEquals("Перемещаемый ингредиент не был установлен в нужную позицию", movedIngredient, currentBurger.ingredients.get(0));
+        }
     }
 
     private void addIngredient() {
